@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Responsive Image Showcase</title>
+
+<!-- Critical for phone compatibility -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        padding: 16px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 420px;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        border-radius: 18px;
+        padding: 16px;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+        text-align: center;
+        animation: fadeIn 0.9s ease;
+    }
+
+    .card img {
+        width: 100%;
+        height: auto;
+        border-radius: 14px;
+        cursor: pointer;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    /* Hover only on devices that support hover (laptops) */
+    @media (hover: hover) {
+        .card img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6);
+        }
+    }
+
+    .title {
+        color: #fff;
+        margin-top: 14px;
+        font-size: clamp(18px, 2.5vw, 22px);
+        font-weight: 600;
+    }
+
+    .subtitle {
+        color: #ddd;
+        font-size: clamp(13px, 2vw, 15px);
+        margin-top: 6px;
+        line-height: 1.4;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(14px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Larger screens (laptops/desktops) */
+    @media (min-width: 768px) {
+        .card {
+            padding: 20px;
+            max-width: 480px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <img src="image.png" alt="Responsive Image" onclick="openImage()">
+    <div class="title">Image Preview</div>
+    <div class="subtitle">Tap or click the image to view full size</div>
+</div>
+
+<script>
+    function openImage() {
+        window.open("image.png", "_blank");
+    }
+</script>
+
+</body>
+</html>
